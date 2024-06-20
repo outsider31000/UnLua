@@ -10,10 +10,16 @@
       "@typescript-to-lua/language-extensions"
     ],
     "strict": true,
-    "rootDir": "Source/Script",
-    "outDir": "Content/Script",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "rootDir": "Source/Script/",
+    "outDir": "Content/Script/",
     "sourceMap": true
   },
+  "exclude": [
+    "node_modules/*"
+  ],
+  "compileOnSave": true,
   "tstl": {
     "luaTarget": "5.4"
   }
