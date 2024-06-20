@@ -19,11 +19,24 @@ function onAbilityCast(this: void, caster: Unit, targetLocation: Vector) {
     }
 }
 
+
+
 // https://typescripttolua.github.io/docs/the-self-parameter
 // https://typescripttolua.github.io/docs/advanced/writing-declarations
 // https://typescripttolua.github.io/docs/advanced/language-extensions/#operator-map-types
 
+
+
+class UUActor extends UObject {
+    UserConstructionScript() {
+        this.Super.Load("sdfsdf");
+
+
+    }
+}
+
 function Test(): void {
+    const ccc = UnLua.Class("Weapon.BP_ProjectileBase_C");
     const axis: FVector = new FVector();
     const axis2: FVector = new FVector(0.5);
     const axis3: FVector = new FVector(0.5, 0.5, 0.7);
@@ -34,4 +47,6 @@ function Test(): void {
     axis.Div(2.0);
     axis.Sub(2.0);
     axis == axis2;
+    UEPrint("sdfsdf", 5, 23);
 }
+
