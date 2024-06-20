@@ -31,17 +31,9 @@ declare class Color {
 
 }
 
-declare class UClass {
-    Load(Path: string): UClass
-    IsChildOf(TargetClass: UClass): boolean
-    GetDefaultObject(): UObject
-}
 
-declare class UObject extends UClass {
-    Super: UClass & UObject;
 
-    Test(): void;
-}
+
 
 declare class MulticastDelegate {
     Add(Object: UObject, Function: any): void;
