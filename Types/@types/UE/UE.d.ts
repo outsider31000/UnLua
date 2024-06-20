@@ -51,14 +51,7 @@ declare class MulticastDelegate {
     IsBound(): boolean;
 }
 
-/*
-declare class UProjectile extends UnLua.Class("UProjectile") {
-    BaseColor: Color;
-}
-    */
-
-
-declare class UActor extends UClass {
+declare class UActor extends UObject {
     Initialize(Initializer: any[]): void;
     UserConstructionScript(): void;
     ReceiveBeginPlay(): void;
@@ -67,13 +60,39 @@ declare class UActor extends UClass {
     ReceiveAnyDamage(Damage: any, DamageType: any, InstigatedBy: any, DamageCauser: any): void;
     ReceiveActorBeginOverlap(OtherActor: UActor): void;
     ReceiveActorEndOverlap(OtherActor: UActor): void;
+
+    GetWorld(): UWorld;
 }
 
 declare class UPawn extends UActor {
 }
 
-declare namespace UKismetMathLibrary {
+declare class UWeapon extends UActor {
+    GetFireInfo(): any;
+}
 
+/** @customConstructor UE.FLinearColor */
+declare class FLinearColor {
+    R: number;
+    G: number;
+    B: number;
+    A: number;
+
+    constructor(r: number, g: number, b: number, a: number);
+}
+
+/** @customConstructor UE.FColor */
+declare class FColor {
+    R: number;
+    G: number;
+    B: number;
+    A: number;
+
+    constructor(r: number, g: number, b: number, a: number);
+}
+
+declare namespace UKismetMathLibrary {
+    function RandomFloat(): number;
 }
 
 declare namespace UWidgetBlueprintLibrary {
@@ -84,6 +103,9 @@ declare namespace UGameplayStatics {
     function GetWorldDeltaSeconds(): number;
 }
 
+declare class UWorld {
+    SpawnActor(Class: UClass, Transform: any): UActor;
+}
 
 /** @noSelf */
 declare function UEPrint(...args: any[]): void

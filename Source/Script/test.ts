@@ -47,6 +47,8 @@ function Test(): void {
     axis.Div(2.0);
     axis.Sub(2.0);
     axis == axis2;
+
+    const test = new FLinearColor(0, 0, 0, 0);
     UEPrint("sdfsdf", 5, 23);
 }
 
