@@ -1,5 +1,10 @@
 {
     "files.exclude": {
+        "**.code-workspace": true,
+        "**.DotSettings": true,
+        "**.md": true,
+        "**.sln": true,
+        "**.uproject": true,
         "Binaries": true,
         "Config": true,
         "Content/AnimationAssets": true,
@@ -8,6 +13,7 @@
         "Content/Tutorials": true,
         "Docs": true,
         "Intermediate": true,
-        "node_modules": true
+        "node_modules": true,
+        "Source/**/**.cs": true
     }
 }
