@@ -1,5 +1,15 @@
 
 
+/**
+ * Export UObject
+ */
+/*
+BEGIN_EXPORT_REFLECTED_CLASS(UObject)
+    ADD_LIB(UObjectLib)
+END_EXPORT_CLASS()
+IMPLEMENT_EXPORTED_CLASS(UObject)
+*/
+
 /** @noSelf **/
 declare namespace UnLua {
     function Class(cls: string): any | UClass | UActor | UPawn;
@@ -7,6 +17,13 @@ declare namespace UnLua {
     function HotReload(moduleName: string): void;
     function Ref(Object: any): void;
     function Unref(Object: any): void;
+}
+
+/** @noSelf **/
+declare namespace UE {
+    function LoadObject(Path: string): UObject;
+    function LoadClass(Path: string): UClass;
+    function NewObject(Path: string): UObject;
 }
 
 declare class TArray {
@@ -63,25 +80,7 @@ declare class UWeapon extends UActor {
     GetFireInfo(): any;
 }
 
-/** @customConstructor UE.FLinearColor */
-declare class FLinearColor {
-    R: number;
-    G: number;
-    B: number;
-    A: number;
 
-    constructor(r: number, g: number, b: number, a: number);
-}
-
-/** @customConstructor UE.FColor */
-declare class FColor {
-    R: number;
-    G: number;
-    B: number;
-    A: number;
-
-    constructor(r: number, g: number, b: number, a: number);
-}
 
 declare namespace UKismetMathLibrary {
     function RandomFloat(): number;
