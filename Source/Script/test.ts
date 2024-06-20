@@ -14,6 +14,6 @@ function onAbilityCast(this: void, caster: Unit, targetLocation: Vector) {
     const friends = units.filter(unit => caster.isFriend(unit));
 
     for (const friend of friends) {
-        friend.givePoints(50);
+        friend.givePoints(5500);
     }
 }
