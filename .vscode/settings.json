@@ -1,7 +1,13 @@
 {
     "files.exclude": {
         "Binaries": true,
-		"Config": true,
-		"Intermediate": true
+        "Config": true,
+        "Content/AnimationAssets": true,
+        "Content/Core": true,
+        "Content/FPWeapon": true,
+        "Content/Tutorials": true,
+        "Docs": true,
+        "Intermediate": true,
+        "node_modules": true
     }
 }

@@ -1,0 +1,16 @@
+{
+  "name": "unlua",
+  "version": "1.0.0",
+  "description": "![LOGO](./Docs/Images/UnLua.png)",
+  "private": true,
+  "scripts": {
+    "build": "tstl",
+    "dev": "tstl --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.4.2",
+    "typescript-to-lua": "^1.25.2"
+  }
+}
