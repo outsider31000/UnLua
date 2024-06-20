@@ -7,13 +7,19 @@
     ],
     "moduleResolution": "Node",
     "types": [
-      "@typescript-to-lua/language-extensions"
+      "@typescript-to-lua/language-extensions",
+      "@types/UE"
     ],
     "strict": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "rootDir": "Source/Script/",
+    "rootDir": "./Source/Script/",
+    "sourceRoot": "./",
     "outDir": "Content/Script/",
+    "typeRoots": [
+      "./Types",
+      "./node_modules"
+    ],
     "sourceMap": true
   },
   "exclude": [
@@ -21,6 +27,7 @@
   ],
   "compileOnSave": true,
   "tstl": {
-    "luaTarget": "5.4"
+    "luaTarget": "5.4",
+    "luaLibImport": "require-minimal"
   }
 }
