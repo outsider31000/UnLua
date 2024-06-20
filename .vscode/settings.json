@@ -1,0 +1,7 @@
+{
+    "files.exclude": {
+        "Binaries": true,
+		"Config": true,
+		"Intermediate": true
+    }
+}
