@@ -1,6 +1,6 @@
 
 
-export declare class APawn extends UActor {
+declare class APawn extends UActor {
     IsDead: boolean;
     BodyDuration: number;
     BoneName: string;
