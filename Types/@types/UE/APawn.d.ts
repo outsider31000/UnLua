@@ -3,23 +3,34 @@
 declare class APawn extends UActor {
     IsDead: boolean;
     BodyDuration: number;
-    BoneName: string;
+    BoneName: string | null;
     Health: number;
     MaxHealth: number;
     Weapon: Weapon;
     Mesh: Mesh;
 
-    StartFire_Server_RPC(): void;
-    StopFire_Server_RPC(): void;
+    WeaponPoint: FVector;
 
-    StartFire_Multicast_RPC(): void;
-    StopFire_Multicast_RPC(): void;
+    CapsuleComponent: CapsuleComponent;
 
-    Died_Multicast_RPC(DamageType: any): void;
+    StartFire_Server_RPC(): void; // unused
+    StopFire_Server_RPC(): void; // unused
+
+    StartFire_Multicast_RPC(): void; // unused
+    StopFire_Multicast_RPC(): void; // unused
+
+    Died_Multicast_RPC(DamageType: any): void; //  unused
+
+    StartFire(): void;
+    StopFire(): void;
+    StartFire_Multicast(): void;
+    StopFire_Multicast(): void;
+    Died_Multicast(DamageType: any): void;
 
     ChangeToRagdoll(): void;
 
-    SpawnWeapon(): Weapon;
+
+    SpawnWeapon(): Weapon | null;
     GetController(): Controller;
 }
 

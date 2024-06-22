@@ -7,3 +7,4 @@
 /// <reference path="./Mesh.d.ts" />
 /// <reference path="./Controller.d.ts" />
 /// <reference path="./APawn.d.ts" />
+/// <reference path="./UKismetSystemLibrary.d.ts" />

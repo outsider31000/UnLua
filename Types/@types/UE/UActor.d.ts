@@ -5,7 +5,7 @@ declare class UActor extends UObject {
     ReceiveBeginPlay(): void;
     ReceiveEndPlay(): void;
     ReceiveTick(DeltaSeconds: number): void;
-    ReceiveAnyDamage(Damage: any, DamageType: any, InstigatedBy: any, DamageCauser: any): void;
+    ReceiveAnyDamage(Damage: number, DamageType: any, InstigatedBy: any, DamageCauser: any): void;
     ReceiveActorBeginOverlap(OtherActor: UActor): void;
     ReceiveActorEndOverlap(OtherActor: UActor): void;
 

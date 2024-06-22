@@ -1,8 +1,8 @@
 declare class Weapon {
     GetFireInfo(): any;
 
-    StartFile(): void;
-    StopFile(): void;
+    StartFire(): void;
+    StopFire(): void;
 
     K2_AttachToComponent(Location: FVector): void;
     K2_DestroyActor(): void;
