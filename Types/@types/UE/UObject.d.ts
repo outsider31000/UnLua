@@ -1,5 +1,5 @@
 // OK
-declare class UObject extends UClass {
+declare class UObject {
     Super: UClass & UObject;
 
     /**
@@ -40,5 +40,5 @@ declare class UObject extends UClass {
     */
     public IsA(Object: UObject): boolean;
     public Release(): void;
-    public Destroy(): void;
+    public Destroy(Duration?: number): void;
 }

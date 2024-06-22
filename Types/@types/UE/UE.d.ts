@@ -14,17 +14,10 @@ IMPLEMENT_EXPORTED_CLASS(UObject)
 
 /** @noSelf **/
 declare namespace UnLua {
-    function Class<T>(cls?: string): { new(): T };
     function Class<T extends UObject>(cls?: string): { new(...args: any[]): T };
-
-    function Classes<T extends UObject>(ctor: { new(...args: any[]): T }): { new(...args: any[]): T };
-
-
     function HotReload(moduleName: string): void;
     function Ref(Object: any): void;
     function Unref(Object: any): void;
-
-
 }
 
 /** @noSelf **/
@@ -70,7 +63,6 @@ declare class MulticastDelegate {
 
 declare class UActor extends UObject {
     constructor();
-    name: "UActor";
     Initialize(Initializer: any[]): void;
     UserConstructionScript(): void;
     ReceiveBeginPlay(): void;
