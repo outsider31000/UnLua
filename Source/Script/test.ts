@@ -1,23 +1,3 @@
-// Declare exposed API
-
-
-type Vector = [number, number, number];
-
-declare function findUnitsInRadius(this: void, center: Vector, radius: number): Unit[];
-declare interface Unit {
-    isFriend(other: Unit): boolean;
-    givePoints(pointsAmount: number): void;
-}
-
-// Use declared API in code
-function onAbilityCast(this: void, caster: Unit, targetLocation: Vector) {
-    const units = findUnitsInRadius(targetLocation, 500);
-    const friends = units.filter(unit => caster.isFriend(unit));
-
-    for (const friend of friends) {
-        friend.givePoints(5500);
-    }
-}
 
 
 
@@ -27,19 +7,47 @@ function onAbilityCast(this: void, caster: Unit, targetLocation: Vector) {
 
 
 
-class UUActor extends UObject {
+// 예시 3: 클래스의 타입을 반환하는 경우
+class MyClass {
+    x: number | undefined;
+    y: number | undefined;
+}
+
+// 팩토리 함수
+/*
+function Classes<T extends UObject>(ctor: { new(...args: any[]): T }): { new(...args: any[]): T } {
+    return UnLua.Class(ctor.name) as { new(...args: any[]): T };
+}
+
+
+
+
+function Class2<T extends UObject>(): { new(...args: any[]): T } {
+    //ctor: { new(...args: any[]): T }
+    return UnLua.Class(T.name);
+}
+*/
+//declare type LuaAdditionMethod<TRight, TReturn> = ((right: TRight) => TReturn) & LuaExtension<"AdditionMethod">;
+
+
+class UUActor extends UnLua.Class<UActor>(UActor.name)
+{
     UserConstructionScript() {
-        this.Super.Load("sdfsdf");
-
-
+        super.GetName();
     }
 }
 
+
 function Test(): void {
     const ccc = UnLua.Class("Weapon.BP_ProjectileBase_C");
-    const axis: FVector = new FVector();
-    const axis2: FVector = new FVector(0.5);
-    const axis3: FVector = new FVector(0.5, 0.5, 0.7);
+    const axis: FVector = FVector();
+    const axis2: FVector = FVector(0.5);
+    let axis3: FVector = FVector(0.5, 0.5, 0.7);
+    axis3 = (axis * axis2 * 5.0) as FVector;
+
+
+
+    /*
     axis.Add(axis3);
     axis.Add(5);
     axis.Mul(axis2);
@@ -47,6 +55,7 @@ function Test(): void {
     axis.Div(2.0);
     axis.Sub(2.0);
     axis == axis2;
+    */
 
     const test = new FLinearColor(0, 0, 0, 0);
     UEPrint("sdfsdf", 5, 23);

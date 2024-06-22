@@ -1,20 +1,24 @@
 
-/** @customConstructor UE.FVector */
-declare class FVector {
-    constructor();
-    constructor(InF: number);
-    constructor(InX: number, InY: number, InZ: number);
-    constructor(Param1: number);
-    X: number;
-    Y: number;
-    Z: number;
 
+type FVector = number &
+{
+    new: () => FVector;
+    X: number,
+    Y: number,
+    Z: number,
     Add: LuaAdditionMethod<FVector, FVector> & LuaAdditionMethod<number, FVector>;
     Sub: LuaSubtractionMethod<FVector, FVector> & LuaSubtractionMethod<number, FVector>;
     Mul: LuaMultiplicationMethod<FVector, FVector> & LuaMultiplicationMethod<Number, FVector>;
     Div: LuaDivisionMethod<FVector, FVector> & LuaDivisionMethod<number, FVector>;
-
 }
+
+
+/** @noSelf @customName UE.FVector **/
+declare function FVector(): FVector;
+/** @noSelf @customName UE.FVector **/
+declare function FVector(f: number): FVector;
+/** @noSelf @customName UE.FVector **/
+declare function FVector(x: number, y: number, z: number): FVector;
 
 declare class FRotator {
     constructor();
