@@ -1,6 +1,6 @@
 
 
-declare class APawn extends UActor {
+export declare class APawn extends UActor {
     IsDead: boolean;
     BodyDuration: number;
     BoneName: string;
@@ -22,3 +22,4 @@ declare class APawn extends UActor {
     SpawnWeapon(): Weapon;
     GetController(): Controller;
 }
+

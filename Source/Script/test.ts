@@ -14,11 +14,7 @@ class CharacterBase extends UnLua.Class<APawn>()
         super.GetName();
     }
     ReceiveBeginPlay(): void {
-
-
     }
-
-
 }
 
 

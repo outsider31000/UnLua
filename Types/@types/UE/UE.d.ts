@@ -61,44 +61,11 @@ declare class MulticastDelegate {
     IsBound(): boolean;
 }
 
-declare class UActor extends UObject {
-    constructor();
-    Initialize(Initializer: any[]): void;
-    UserConstructionScript(): void;
-    ReceiveBeginPlay(): void;
-    ReceiveEndPlay(): void;
-    ReceiveTick(DeltaSeconds: number): void;
-    ReceiveAnyDamage(Damage: any, DamageType: any, InstigatedBy: any, DamageCauser: any): void;
-    ReceiveActorBeginOverlap(OtherActor: UActor): void;
-    ReceiveActorEndOverlap(OtherActor: UActor): void;
-
-    GetWorld(): UWorld;
-}
-
-declare class UPawn extends UActor {
-}
-
-declare class UWeapon extends UActor {
-    GetFireInfo(): any;
-}
 
 
 
-declare namespace UKismetMathLibrary {
-    function RandomFloat(): number;
-}
 
-declare namespace UWidgetBlueprintLibrary {
 
-}
-
-declare namespace UGameplayStatics {
-    function GetWorldDeltaSeconds(): number;
-}
-
-declare class UWorld {
-    SpawnActor(Class: UClass, Transform: any): UActor;
-}
 
 /** @noSelf */
 declare function UEPrint(...args: any[]): void

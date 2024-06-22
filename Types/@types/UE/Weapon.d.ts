@@ -1,4 +1,6 @@
 declare class Weapon {
+    GetFireInfo(): any;
+
     StartFile(): void;
     StopFile(): void;
 
