@@ -1,4 +1,4 @@
-declare class APawn extends UActor {
+declare class APawn extends AActor {
   IsDead: boolean;
   BodyDuration: number;
   BoneName: string | null;
@@ -17,13 +17,13 @@ declare class APawn extends UActor {
   StartFire_Multicast_RPC(): void; // unused
   StopFire_Multicast_RPC(): void; // unused
 
-  Died_Multicast_RPC(DamageType: any): void; //  unused
+  Died_Multicast_RPC(DamageType: unknown): void; //  unused
 
   StartFire(): void;
   StopFire(): void;
   StartFire_Multicast(): void;
   StopFire_Multicast(): void;
-  Died_Multicast(DamageType: any): void;
+  Died_Multicast(DamageType: unknown): void;
 
   ChangeToRagdoll(): void;
 

@@ -12,7 +12,7 @@ class CharacterBase extends UnLua.Class<APawn>() {
     this.Health = Health;
     this.MaxHealth = Health;
     let position = FVector();
-    position = (position * position) as FVector;
+    position = (position * position - position * (position / position)) as FVector;
     print(position);
   }
 

@@ -24,8 +24,11 @@
       "plugin:@typescript-eslint/recommended"
     ],
     "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
     "rules": {
-      "@typescript-eslint/strict-boolean-expressions": 0
+      "@typescript-eslint/strict-boolean-expressions": "error"
     }
   },
   "devDependencies": {

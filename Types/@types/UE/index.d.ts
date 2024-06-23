@@ -1,10 +1,11 @@
-/// <reference path="./UE.d.ts" />
-/// <reference path="./Math.d.ts" />
-/// <reference path="./UClass.d.ts" />
-/// <reference path="./UObject.d.ts" />
-/// <reference path="./UActor.d.ts" />
-/// <reference path="./Weapon.d.ts" />
-/// <reference path="./Mesh.d.ts" />
-/// <reference path="./Controller.d.ts" />
-/// <reference path="./APawn.d.ts" />
-/// <reference path="./UKismetSystemLibrary.d.ts" />
+import './UE.d.ts';
+import './Math.d.ts';
+import './UClass.d.ts';
+import './UObject.d.ts';
+import './AActor.d.ts';
+import './Weapon.d.ts';
+import './Mesh.d.ts';
+import './Controller.d.ts';
+import './APawn.d.ts';
+import './ACharacter.d.ts';
+import './UKismetSystemLibrary.d.ts';
