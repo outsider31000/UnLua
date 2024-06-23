@@ -11,3 +11,54 @@ UObject
                         USkeletalMeshComponent
                     UStaticMeshComponent
                     UWidgetComponent
+
+
+LogTemp: Class: TPSGameInstance
+LogTemp: Function: ReceiveShutdown
+LogTemp: Function: ReceiveInit
+LogTemp: Class: BP_TriggerArea_C
+LogTemp: Function: ReceiveBeginPlay
+LogTemp: Function: ReceiveActorBeginOverlap
+LogTemp: Function: ReceiveActorEndOverlap
+LogTemp: Class: BP_Game_C
+LogTemp: Function: NotifyEnemyDied
+LogTemp: Function: ReceiveBeginPlay
+LogTemp: Class: BP_PlayerController_C
+LogTemp: Function: ReceiveBeginPlay
+LogTemp: Function: UserConstructionScript
+LogTemp: Class: BP_PlayerCharacter_C
+LogTemp: Function: GetWeaponTraceInfo
+LogTemp: Function: ReceiveDestroyed
+LogTemp: Function: UpdateAiming
+LogTemp: Function: ReceiveBeginPlay
+LogTemp: Function: ChangeToRagdoll
+LogTemp: Function: StartFire_Multicast
+LogTemp: Function: ReceiveAnyDamage
+LogTemp: Function: StartFire_Server
+LogTemp: Function: StopFire_Server
+LogTemp: Function: Died_Multicast
+LogTemp: Function: StopFire_Multicast
+LogTemp: Class: ABP_PlayerCharacter_C
+LogTemp: Function: BlueprintUpdateAnimation
+LogTemp: Function: BlueprintBeginPlay
+LogTemp: Class: UMG_Main_C
+LogTemp: Function: Construct
+LogTemp: Class: BP_DefaultWeapon_C
+LogTemp: Function: UserConstructionScript
+LogTemp: Function: StopFire
+LogTemp: Function: ReceiveBeginPlay
+LogTemp: Function: StartFire
+LogTemp: Class: BP_AICharacter_C
+LogTemp: Function: ReceiveBeginPlay
+LogTemp: Function: Died_Multicast
+LogTemp: Function: ChangeToRagdoll
+LogTemp: Function: StartFire_Multicast
+LogTemp: Function: ReceiveAnyDamage
+LogTemp: Function: StartFire_Server
+LogTemp: Function: StopFire_Server
+LogTemp: Function: StopFire_Multicast
+LogTemp: Class: ABP_AICharacter_C
+LogTemp: Function: BlueprintUpdateAnimation
+LogTemp: Function: BlueprintBeginPlay
+LogTemp: Class: BP_AIController_C
+LogTemp: Function: ReceiveBeginPlay

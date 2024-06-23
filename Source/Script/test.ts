@@ -1,6 +1,7 @@
 // https://typescripttolua.github.io/docs/the-self-parameter
 // https://typescripttolua.github.io/docs/advanced/writing-declarations
 // https://typescripttolua.github.io/docs/advanced/language-extensions/#operator-map-types
+
 class CharacterBase extends UnLua.Class<APawn>() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   Initialize(_Initializer: unknown[]): void {
@@ -68,8 +69,9 @@ class CharacterBase extends UnLua.Class<APawn>() {
     if (Controller != null) Controller.UnPossess();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public Destroy(Duration?: number | undefined): void {
-    UKismetSystemLibrary.Delay(this, Duration);
+    //UKismetSystemLibrary.Delay(this, Duration);
   }
 }
 
