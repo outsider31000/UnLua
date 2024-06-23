@@ -2,9 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/TypeScriptToLua/TypeScriptToLua/master/tsconfig-schema.json",
   "compilerOptions": {
     "target": "ESNext",
-    "lib": [
-      "ESNext"
-    ],
+    "lib": ["ESNext"],
     "module": "commonjs", // commonjs로 해야함.
     "types": [
       "@typescript-to-lua/language-extensions",
@@ -13,18 +11,13 @@
     ],
     "strict": true,
     "experimentalDecorators": true,
-    "rootDir": "./Source/Script/",
+    "rootDir": "",
     "sourceRoot": "./",
     "outDir": "Content/Script/",
-    "typeRoots": [
-      "./Types",
-      "./node_modules"
-    ],
+    "typeRoots": ["./Types", "./node_modules"],
     "sourceMap": true
   },
-  "exclude": [
-    "node_modules/*"
-  ],
+  "exclude": ["node_modules/*"],
   "compileOnSave": true,
   "allowSyntheticDefaultImports": true,
   "tstl": {

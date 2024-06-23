@@ -1,19 +1,24 @@
 {
-    "files.exclude": {
-        "**.code-workspace": true,
-        "**.DotSettings": true,
-        "**.md": true,
-        "**.sln": true,
-        "**.uproject": true,
-        "Binaries": true,
-        "Config": true,
-        "Content/AnimationAssets": true,
-        "Content/Core": true,
-        "Content/FPWeapon": true,
-        "Content/Tutorials": true,
-        "Docs": true,
-        "Intermediate": true,
-        "node_modules": true,
-        "Source/**/**.cs": true
-    }
+  "files.exclude": {
+    "**.code-workspace": true,
+    "**.DotSettings": true,
+    "**.md": true,
+    "**.sln": true,
+    "**.uproject": true,
+    "Binaries": true,
+    "Config": true,
+    "Content/AnimationAssets": true,
+    "Content/Core": true,
+    "Content/FPWeapon": true,
+    "Content/Tutorials": true,
+    "Docs": true,
+    "Intermediate": true,
+    "node_modules": true,
+    "Source/**/**.cs": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
+  }
 }
