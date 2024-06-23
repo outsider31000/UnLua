@@ -1,3 +1,3 @@
 declare class Controller {
-    UnPossess(): void;
+  UnPossess(): void;
 }

@@ -1,4 +1,3 @@
-
 declare namespace UGameplayStatics {
-    function GetWorldDeltaSeconds(): number;
+  function GetWorldDeltaSeconds(): number;
 }

@@ -1,3 +1,3 @@
 declare namespace UKismetMathLibrary {
-    function RandomFloat(): number;
+  function RandomFloat(): number;
 }

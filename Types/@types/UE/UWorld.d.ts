@@ -1,3 +1,3 @@
 declare class UWorld {
-    SpawnActor(Class: UClass, Transform: any): UActor;
+  SpawnActor(Class: UClass, Transform: any): UActor;
 }

@@ -32,5 +32,8 @@ declare class UActor extends UObject {
 
     // Adds a delta to the location of this component in its local reference frame.
     AddActorLocalOffset(): void
+
+    // Adds a delta to the rotation of this component in its local reference frame
+    AddActorLocalRotation(): void
 }
 

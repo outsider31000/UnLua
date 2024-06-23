@@ -1,3 +1,3 @@
 declare class Mesh {
-    SetSimulatePhysics(enable: boolean): void;
+  SetSimulatePhysics(enable: boolean): void;
 }

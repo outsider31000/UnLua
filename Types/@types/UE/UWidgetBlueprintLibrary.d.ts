@@ -1,4 +1,1 @@
-
-declare namespace UWidgetBlueprintLibrary {
-
-}
+declare namespace UWidgetBlueprintLibrary {}
