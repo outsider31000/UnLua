@@ -1,0 +1,13 @@
+https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Classes
+
+UObject
+    AActor
+    UActorComponent
+        USceneComponent
+            ULightComponentBase
+            UPrimitiveComponent
+                UMeshComponent
+                    USkinnedMeshComponent
+                        USkeletalMeshComponent
+                    UStaticMeshComponent
+                    UWidgetComponent
