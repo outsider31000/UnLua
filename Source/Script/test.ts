@@ -1,13 +1,7 @@
-
-
-
 // https://typescripttolua.github.io/docs/the-self-parameter
 // https://typescripttolua.github.io/docs/advanced/writing-declarations
 // https://typescripttolua.github.io/docs/advanced/language-extensions/#operator-map-types
-
-
-
-export class CharacterBase extends UnLua.Class<APawn>()
+class CharacterBase extends UnLua.Class<APawn>()
 {
     Initialize(Initializer: any[]): void {
         this.IsDead = false;
@@ -73,5 +67,4 @@ export class CharacterBase extends UnLua.Class<APawn>()
     }
 }
 
-
-
+export = CharacterBase;

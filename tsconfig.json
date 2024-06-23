@@ -5,13 +5,12 @@
     "lib": [
       "ESNext"
     ],
-    "moduleResolution": "Node",
+    "module": "commonjs", // commonjs로 해야함.
     "types": [
       "@typescript-to-lua/language-extensions",
       "@types/UE"
     ],
     "strict": true,
-    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "rootDir": "./Source/Script/",
     "sourceRoot": "./",
@@ -26,6 +25,7 @@
     "node_modules/*"
   ],
   "compileOnSave": true,
+  "allowSyntheticDefaultImports": true,
   "tstl": {
     "luaTarget": "5.4",
     "luaLibImport": "require-minimal"
