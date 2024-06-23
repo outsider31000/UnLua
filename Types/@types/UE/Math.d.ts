@@ -4,10 +4,8 @@ type FVector = number & {
   Y: number;
   Z: number;
   Add: LuaAdditionMethod<FVector, FVector> & LuaAdditionMethod<number, FVector>;
-  Sub: LuaSubtractionMethod<FVector, FVector> &
-    LuaSubtractionMethod<number, FVector>;
-  Mul: LuaMultiplicationMethod<FVector, FVector> &
-    LuaMultiplicationMethod<Number, FVector>;
+  Sub: LuaSubtractionMethod<FVector, FVector> & LuaSubtractionMethod<number, FVector>;
+  Mul: LuaMultiplicationMethod<FVector, FVector> & LuaMultiplicationMethod<number, FVector>;
   Div: LuaDivisionMethod<FVector, FVector> & LuaDivisionMethod<number, FVector>;
 };
 

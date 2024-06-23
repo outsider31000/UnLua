@@ -11,6 +11,9 @@ class CharacterBase extends UnLua.Class<APawn>() {
     const Health = 100;
     this.Health = Health;
     this.MaxHealth = Health;
+    let position = FVector();
+    position = (position * position) as FVector;
+    print(position);
   }
 
   ReceiveBeginPlay(): void {
