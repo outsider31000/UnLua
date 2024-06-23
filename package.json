@@ -14,7 +14,24 @@
     "printWidth": 100,
     "arrowParens": "avoid"
   },
+  "eslintConfig": {
+    "root": true,
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "rules": {
+      "@typescript-eslint/strict-boolean-expressions": 0
+    }
+  },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.13.1",
+    "@typescript-eslint/parser": "^7.13.1",
+    "eslint": "^8.57.0",
     "lua-types": "^2.13.1",
     "prettier": "^3.3.2",
     "typescript": "^5.4.2",

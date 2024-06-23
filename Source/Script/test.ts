@@ -2,17 +2,18 @@
 // https://typescripttolua.github.io/docs/advanced/writing-declarations
 // https://typescripttolua.github.io/docs/advanced/language-extensions/#operator-map-types
 class CharacterBase extends UnLua.Class<APawn>() {
-  Initialize(Initializer: any[]): void {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  Initialize(_Initializer: unknown[]): void {
     this.IsDead = false;
     this.BodyDuration = 3.0;
     this.BoneName = null;
-    let Health = 100;
+    const Health = 100;
     this.Health = Health;
     this.MaxHealth = Health;
   }
 
   ReceiveBeginPlay(): void {
-    let Weapon = this.SpawnWeapon();
+    const Weapon = this.SpawnWeapon();
     if (Weapon != null) {
       Weapon.K2_AttachToComponent(this.WeaponPoint);
       this.Weapon = Weapon;
@@ -41,26 +42,29 @@ class CharacterBase extends UnLua.Class<APawn>() {
 
   ReceiveAnyDamage(
     Damage: number,
-    DamageType: any,
-    InstigatedBy: any,
-    DamageCauser: any,
+    DamageType: unknown,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    InstigatedBy: unknown,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    DamageCauser: unknown,
   ): void {
     if (this.IsDead != false) {
-      let Health = this.Health - Damage;
+      const Health = this.Health - Damage;
       this.Health = Math.max(Health, 0);
       if (Health <= 0.0) {
         this.Died_Multicast(DamageType);
-        let co = coroutine.create(() => this.Destroy);
+        const co = coroutine.create(() => this.Destroy);
         coroutine.resume(co, this, this.BodyDuration);
       }
     }
   }
 
-  Died_Multicast_RPC(DamageType: any) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  Died_Multicast_RPC(DamageType: unknown) {
     this.IsDead = true;
     this.CapsuleComponent.SetCollisionEnabled(false);
     this.StopFire();
-    let Controller = this.GetController();
+    const Controller = this.GetController();
     if (Controller != null) Controller.UnPossess();
   }
 
