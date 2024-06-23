@@ -13,6 +13,7 @@ WindowsNoEditor/
 MacNoEditor/
 Android_*/
 IOS/
+node_modules/
 *.sln
 *.VC.db
 *.xcworkspace
