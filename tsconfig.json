@@ -8,7 +8,8 @@
     "module": "commonjs", // commonjs로 해야함.
     "types": [
       "@typescript-to-lua/language-extensions",
-      "@types/UE"
+      "@types/UE",
+      "lua-types/5.4"
     ],
     "strict": true,
     "experimentalDecorators": true,

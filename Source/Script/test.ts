@@ -18,8 +18,9 @@ class CharacterBase extends UnLua.Class<APawn>()
             Weapon.K2_AttachToComponent(this.WeaponPoint);
             this.Weapon = Weapon;
         }
-
     }
+
+
     SpawnWeapon(): Weapon | null {
         return null;
     }
@@ -48,7 +49,8 @@ class CharacterBase extends UnLua.Class<APawn>()
             this.Health = Math.max(Health, 0);
             if (Health <= 0.0) {
                 this.Died_Multicast(DamageType);
-
+                let co = coroutine.create(() => this.Destroy);
+                coroutine.resume(co, this, this.BodyDuration);
             }
         }
     }
