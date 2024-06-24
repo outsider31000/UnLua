@@ -1,5 +1,6 @@
-type FVector = number & {
-  new: () => FVector;
+type FVector = number & Vector;
+
+declare class Vector {
   X: number;
   Y: number;
   Z: number;
@@ -7,14 +8,28 @@ type FVector = number & {
   Sub: LuaSubtractionMethod<FVector, FVector> & LuaSubtractionMethod<number, FVector>;
   Mul: LuaMultiplicationMethod<FVector, FVector> & LuaMultiplicationMethod<number, FVector>;
   Div: LuaDivisionMethod<FVector, FVector> & LuaDivisionMethod<number, FVector>;
-};
+  Set(x: number, y: number, z: number): void;
+  Normalize(): boolean;
+  Dot(a: FVector): number;
+  Cross(a: FVector): FVector;
+  ToRotator(): FRotator;
+  ToQuat(): FQuat;
+  Size(): number;
+  Size2D(): unknown;
+  SizeSquared(): number;
+  SizeSquared2D(): unknown;
+  IsNormalized(): boolean;
+  CosineAngle2D(): unknown;
+  RotateAngleAxis(): unknown;
+
+  static Dist(a: FVector): number;
+  static Dist2D(a: unknown): unknown;
+  static DistSquared(a: FVector): number;
+  static DistSquared2D(a: unknown): unknown;
+}
 
 /** @noSelf @customName UE.FVector **/
-declare function FVector(): FVector;
-/** @noSelf @customName UE.FVector **/
-declare function FVector(f: number): FVector;
-/** @noSelf @customName UE.FVector **/
-declare function FVector(x: number, y: number, z: number): FVector;
+declare function FVector(x?: number, y?: number, z?: number): FVector;
 
 declare class FRotator {
   constructor();
