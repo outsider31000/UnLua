@@ -12,6 +12,8 @@ class CharacterBase extends UnLua.Class<ACharacter>() {
     this.MaxHealth = Health;
     let position = FVector();
     position = (position * position - position * (position / position)) as FVector;
+
+    position = position.Cross(position);
     print(position);
   }
 
