@@ -2,8 +2,7 @@
 // https://typescripttolua.github.io/docs/advanced/writing-declarations
 // https://typescripttolua.github.io/docs/advanced/language-extensions/#operator-map-types
 
-class CharacterBase extends UnLua.Class<APawn>() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+class CharacterBase extends UnLua.Class<ACharacter>() {
   Initialize(_Initializer: unknown[]): void {
     this.IsDead = false;
     this.BodyDuration = 3.0;
@@ -47,10 +46,8 @@ class CharacterBase extends UnLua.Class<APawn>() {
   ReceiveAnyDamage(
     Damage: number,
     DamageType: unknown,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    InstigatedBy: unknown,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    DamageCauser: unknown,
+    _InstigatedBy: unknown,
+    _DamageCauser: unknown,
   ): void {
     if (this.IsDead != false) {
       const Health = this.Health - Damage;
@@ -63,8 +60,7 @@ class CharacterBase extends UnLua.Class<APawn>() {
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  Died_Multicast_RPC(DamageType: unknown) {
+  Died_Multicast_RPC(_DamageType: unknown) {
     this.IsDead = true;
     this.CapsuleComponent.SetCollisionEnabled(false);
     this.StopFire();
@@ -72,8 +68,7 @@ class CharacterBase extends UnLua.Class<APawn>() {
     if (Controller != null) Controller.UnPossess();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public Destroy(Duration?: number | undefined): void {
+  public Destroy(_Duration?: number | undefined): void {
     //UKismetSystemLibrary.Delay(this, Duration);
   }
 }

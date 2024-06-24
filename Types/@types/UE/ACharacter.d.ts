@@ -50,97 +50,73 @@ declare class ACharacter extends APawn {
     DamageCauser: AActor,
   ): void;
 
-  // Apply momentum caused by damage.
+  //Event called after actor's base changes (if SetBase was requested to notify us with bNotifyPawn).
   protected BaseChange(): void;
 
+  // Cache mesh offset from capsule.
+  CacheInitialMeshOffset(MeshRelativeLocation: FVector, MeshRelativeRotation: FRotator): void;
+
+  CanCrouch(): boolean;
+
+  // Check if the character can jump in the current state.
+  CanJump(): boolean;
+
+  CanJumpInternal(): boolean; // Customizable event to check if the character can jump in the current state.
+
+  CanJumpInternal_Implementation(): boolean; // Customizable event to check if the character can jump in the current state.
+
+  // True if buffered move is usable to teleport client back to.
+  CanUseRootMotionRepMove(RootMotionRepMove: unknown, ClientMontageInstance: unknown): boolean;
+
+  CheckJumpInput(DeltaTime: number): void; // Trigger jump if jump button has been pressed.
+
+  ClearJumpInput(DeltaTime: number): void; // Update jump input state after having checked input.
+
+  // If no client adjustment is needed after processing received ServerMove(), ack the good move so client can remove it from SavedMoves
+  ClientAckGoodMove(TimeStamp: number): void;
+
+  // If no client adjustment is needed after processing received ServerMove(), ack the good move so client can remove it from SavedMoves
+  ClientAckGoodMove_Implementation(TimeStamp: number): void;
+
+  // Replicate position correction to client, associated with a timestamped servermove.
+  ClientAdjustPosition(
+    TimeStamp: number,
+    NewLoc: FVector,
+    NewVel: FVector,
+    NewBase: unknown,
+    NewBaseBoneName: string,
+    bHasBase: boolean,
+    bBaseRelativePosition: boolean,
+    ServerMovementMode: number,
+  ): void;
+
+  // Replicate position correction to client, associated with a timestamped servermove.
+  ClientAdjustPosition_Implementation(
+    TimeStamp: number,
+    NewLoc: FVector,
+    NewVel: FVector,
+    NewBase: unknown,
+    NewBaseBoneName: string,
+    bHasBase: boolean,
+    bBaseRelativePosition: boolean,
+    ServerMovementMode: number,
+  ): void;
+
+  // Replicate position correction to client when using root motion for movement.
+  ClientAdjustRootMotionPosition(
+    TimeStamp: number,
+    ServerMontageTrackPosition: number,
+    ServerLoc: FVector,
+    ServerRotation: unknown,
+    ServerVelZ: number,
+    ServerBase: unknown,
+    ServerBoneName: string,
+    bHasBase: boolean,
+    bBaseRelativePosition: boolean,
+    ServerMovementMode: number,
+  ): void;
+
   /*
-Event called after actor's base changes (if SetBase was requested to notify us with bNotifyPawn).
-Public function Virtual	void	
-CacheInitialMeshOffset ( FVector MeshRelativeLocation,
-FRotator MeshRelativeRotation
-)
-
-Cache mesh offset from capsule.
-Public function Virtual Const	bool	
-CanCrouch ()
-
- 
-Public function Const	bool	
-CanJump ()
-
-Check if the character can jump in the current state.
-Protected function Const	bool	
-CanJumpInternal ()
-
-Customizable event to check if the character can jump in the current state.
-Protected function Virtual Const	bool	
-CanJumpInternal_Implementation ()
-
-Customizable event to check if the character can jump in the current state.
-Public function Const	bool	
-CanUseRootMotionRepMove ( const FSimulatedRootMotionReplicatedMove& RootMotionRepMove,
-const FAnimMontageInstance& ClientMontageInstance
-)
-
-True if buffered move is usable to teleport client back to.
-Public function Virtual	void	
-CheckJumpInput ( float DeltaTime
-)
-
-Trigger jump if jump button has been pressed.
-Public function Virtual	void	
-ClearJumpInput ( float DeltaTime
-)
-
-Update jump input state after having checked input.
-Public function	void	
-ClientAckGoodMove ( float TimeStamp
-)
-
-If no client adjustment is needed after processing received ServerMove(), ack the good move so client can remove it from SavedMoves
-Public function	void	
-ClientAckGoodMove_Implementation ( float TimeStamp
-)
-
-If no client adjustment is needed after processing received ServerMove(), ack the good move so client can remove it from SavedMoves
-Public function	void	
-ClientAdjustPosition ( float TimeStamp,
-FVector NewLoc,
-FVector NewVel,
-UPrimitiveComponent* NewBase,
-FName NewBaseBoneName,
-bool bHasBase,
-bool bBaseRelativePosition,
-uint8 ServerMovementMode
-)
-
-Replicate position correction to client, associated with a timestamped servermove.
-Public function	void	
-ClientAdjustPosition_Implementation ( float TimeStamp,
-FVector NewLoc,
-FVector NewVel,
-UPrimitiveComponent* NewBase,
-FName NewBaseBoneName,
-bool bHasBase,
-bool bBaseRelativePosition,
-uint8 ServerMovementMode
-)
-
-Replicate position correction to client, associated with a timestamped servermove.
-Public function	void	
-ClientAdjustRootMotionPosition ( float TimeStamp,
-float ServerMontageTrackPosition,
-FVector ServerLoc,
-FVector_NetQuantizeNormal ServerRotation,
-float ServerVelZ,
-UPrimitiveComponent* ServerBase,
-FName ServerBoneName,
-bool bHasBase,
-bool bBaseRelativePosition,
-uint8 ServerMovementMode
-)
-
-Replicate position correction to client when using root motion for movement.
 Public function	void	
 ClientAdjustRootMotionPosition_Implementation ( float TimeStamp,
 float ServerMontageTrackPosition,
