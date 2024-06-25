@@ -11,7 +11,10 @@
     "sourceRoot": "./",
     "outDir": "Content/Script/",
     "typeRoots": ["./Types", "./node_modules"],
-    "sourceMap": true
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "plugins": [{ "name": "typescript-tstl-plugin" }]
   },
   "exclude": ["node_modules/*"],
   "compileOnSave": true,
