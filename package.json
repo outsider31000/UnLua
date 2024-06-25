@@ -4,8 +4,8 @@
   "description": "![LOGO](./Docs/Images/UnLua.png)",
   "private": true,
   "scripts": {
-    "build": "tstl",
-    "dev": "tstl --watch"
+    "build": "tstl -p tsconfig.json",
+    "dev": "tstl --watch -p tsconfig.json"
   },
   "author": "",
   "license": "ISC",
