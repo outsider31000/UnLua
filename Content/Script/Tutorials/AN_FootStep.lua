@@ -1,9 +1,15 @@
----@type AN_FootStep_C : UAnimNotify
-local M = UnLua.Class()
-
-function M:Received_Notify(MeshComp, Animation)
-    print("foot step")
+local ____lualib = require("lualib_bundle")
+local __TS__Class = ____lualib.__TS__Class
+local __TS__ClassExtends = ____lualib.__TS__ClassExtends
+local AN_FootStep = __TS__Class()
+AN_FootStep.name = "AN_FootStep"
+__TS__ClassExtends(
+    AN_FootStep,
+    UnLua.Class()
+)
+function AN_FootStep.prototype.Received_Notify(self, MeshComp, Animation)
+    print("foot step!!!!!!!!!!!!!!!!!!!!!!!!!")
     return true
 end
-
-return M
+local ____exports = AN_FootStep
+return ____exports

@@ -10,7 +10,8 @@ IMPLEMENT_EXPORTED_CLASS(UObject)
 
 /** @noSelf **/
 declare namespace UnLua {
-  function Class<SUPER extends UObject>(Super?: string): { new (...args: unknown[]): SUPER };
+  // function Class<SUPER extends UObject>(Super?: string): { new (...args: unknown[]): SUPER };
+  function Class<SUPER extends UObject>(Super?: string): { new (...args: unknown[]): SUPER & { Super: SUPER } };
   function HotReload(moduleName: string): void;
   function Ref(Object: unknown): void;
   function Unref(Object: unknown): void;

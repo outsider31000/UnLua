@@ -59,8 +59,23 @@ namespace UnLua
                     break;
                 }
                 lua_pop(L, 1);
-                lua_pushstring(L, "Super");
+                // Check for "prototype"
+                lua_pushstring(L, "prototype");
                 lua_rawget(L, -2);
+                if (!lua_istable(L, -1))
+                {
+                    lua_pop(L, 1);
+                    // First, check for "____super"
+                    lua_pushstring(L, "Super");
+                    lua_rawget(L, -2);
+                    if (!lua_istable(L, -1))
+                    {
+                        lua_pop(L, 1); // pop the non-table value
+                        // Then, check for "Super"
+                        lua_pushstring(L, "____super");
+                        lua_rawget(L, -2);
+                    }
+                }
                 lua_remove(L, -2);
             }
             while (lua_istable(L, -1));

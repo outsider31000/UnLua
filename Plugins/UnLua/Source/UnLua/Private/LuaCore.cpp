@@ -562,7 +562,7 @@ void PushObjectCore(lua_State *L, UObjectBaseUtility *Object)
     }
     
 #if UNLUA_ENABLE_DEBUG != 0
-	UE_LOG(LogUnLua, Log, TEXT("%s : %p,%s,%s"), ANSI_TO_TCHAR(__FUNCTION__), Object,*Object->GetName(), *MetatableName);
+	UE_LOG(LogUnLua, Log, TEXT("%s : %p,%s,%s!!!!!!!!!!!!!!!!!!!!"), ANSI_TO_TCHAR(__FUNCTION__), Object,*Object->GetName(), *MetatableName);
 #endif
 
     NewUserdataWithTwoLvPtrTag(L, sizeof(void*), Object);  // create a userdata and store the UObject address
@@ -893,9 +893,26 @@ int32 PushFunction(lua_State *L, UObjectBaseUtility *Object, const char *Functio
                     else
                     {
                         lua_pop(L, 1);
-                        lua_pushstring(L, "Super");
+
+
+                        // Check for "prototype"
+                        lua_pushstring(L, "prototype");
                         lua_rawget(L, -2);
-                        lua_remove(L, -2);
+                        if (!lua_istable(L, -1))
+                        {
+                            lua_pop(L, 1);
+                            // First, check for "____super"
+                            lua_pushstring(L, "____super");
+                            lua_rawget(L, -2);
+                            if (!lua_istable(L, -1))
+                            {
+                                lua_pop(L, 1); // pop the non-table value
+                                // Then, check for "Super"
+                                lua_pushstring(L, "Super");
+                                lua_rawget(L, -2);
+                            }
+                        }
+                        lua_remove(L, -2); // Remove the current table, keep the parent table
                     }
                 } while (lua_istable(L, -1));
             }
@@ -1185,6 +1202,27 @@ int32 TraverseTable(lua_State *L, int32 Index, void *Userdata, bool(*TraverseWor
             }
             lua_pop(L, 1);
         }
+
+        // 추가: prototype 테이블 검사
+        lua_pushstring(L, "prototype");
+        Type = lua_rawget(L, Index);  // prototype 테이블을 가져옴
+        if (Type == LUA_TTABLE)
+        {
+            lua_pushnil(L);
+            while (lua_next(L, -2) != 0)
+            {
+                if (TraverseWorker)
+                {
+                    bool b = TraverseWorker(L, Userdata);
+                    if (b)
+                    {
+                        ++NumElements;
+                    }
+                }
+                lua_pop(L, 1);
+            }
+        }
+        lua_pop(L, 1);  // prototype 테이블을 스택에서 제거
         return NumElements;
     }
     return INDEX_NONE;

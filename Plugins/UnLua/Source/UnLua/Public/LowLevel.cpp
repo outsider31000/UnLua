@@ -106,8 +106,18 @@ namespace UnLua
                 bNext = TraverseTable(L, -1, &FunctionNames, GetFunctionName) > INDEX_NONE;
                 if (bNext)
                 {
-                    lua_pushstring(L, "Super");
+                    // TraverseTable(L, -1, &FunctionNames, GetFunctionName)가 호출되어 현재 Lua 스택의 - 1 위치에 있는 
+                    // 테이블을 탐색하고, GetFunctionName 콜백을 사용해 함수 이름을 FunctionNames에 추가합니다.
+                    // TraverseTable이 함수 항목을 찾았는지 여부를 bNext에 저장합니다.
+                    // 반환 값이 INDEX_NONE보다 크면 하나 이상의 함수 항목을 찾은 것입니다.
+                    lua_pushstring(L, "____super");
                     lua_rawget(L, -2);
+                    if (!lua_istable(L, -1))
+                    {
+                        lua_pop(L, 1);
+                        lua_pushstring(L, "Super");
+                        lua_rawget(L, -2);
+                    }
                     ++N;
                     bNext = lua_istable(L, -1);
                 }

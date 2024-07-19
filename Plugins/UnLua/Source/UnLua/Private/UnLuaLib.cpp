@@ -153,6 +153,7 @@ namespace UnLua
             local rawequal = _G.rawequal
             local type = _G.type
             local getmetatable = _G.getmetatable
+            local setmetatable = _G.setmetatable
             local require = _G.require
 
             local GetUProperty = GetUProperty
@@ -169,7 +170,7 @@ namespace UnLua
                         rawset(t, k, v)
                         return v
                     end
-                    super = rawget(super, "Super")
+                      super = rawget(super, "____super") or rawget(super, "Super")
                 end
 
                 local p = mt[k]
@@ -203,10 +204,22 @@ namespace UnLua
                     super_class = require(super_name)
                 end
 
-                local new_class = {}
+                local new_class = { prototype ={}}
                 new_class.__index = Index
                 new_class.__newindex = NewIndex
-                new_class.Super = super_class
+                setmetatable(new_class.prototype, { __index = new_class })
+
+                if super_class then
+                    setmetatable(new_class, { __index = super_class })
+                    setmetatable(new_class.prototype, { __index = super_class.prototype })
+                    new_class.Super = super_class
+                    new_class.prototype.Super = super_class
+                    new_class.____super = super_class
+                else
+                    new_class.Super = { prototype = {} }
+                    new_class.prototype.Super = new_class.Super
+                    setmetatable(new_class.Super.prototype, { __index = function(_, key) return NotExist end })
+                end
 
               return new_class
             end

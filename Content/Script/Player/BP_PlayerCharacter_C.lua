@@ -29,7 +29,11 @@ function M:SpawnWeapon()
 end
 
 function M:ReceiveBeginPlay()
-	self.Super.ReceiveBeginPlay(self)
+	if self.Super and self.Super.ReceiveBeginPlay then
+        self.Super.ReceiveBeginPlay(self)
+    else
+        print("Super.ReceiveBeginPlay is not defined")
+    end
 	self.DefaultFOV = self.Camera.FieldOfView
 	self.TimerHandle = UE.UKismetSystemLibrary.K2_SetTimerDelegate({self, M.FallCheck}, 1.0, true)
 	local InterpFloats = self.ZoomInOut.TheTimeline.InterpFloats
