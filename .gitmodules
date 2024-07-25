@@ -1,4 +1,4 @@
-[submodule "Plugins/TSDE"]
-	path = Plugins/TSDE
+[submodule "Plugins"]
+	path = Plugins
 	url = https://github.com/seokwoongchoi/TSDE.git
 	branch = main
