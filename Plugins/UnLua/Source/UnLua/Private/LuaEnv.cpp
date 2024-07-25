@@ -31,6 +31,9 @@
 #include "UnLuaSettings.h"
 #include "lstate.h"
 
+#if WITH_TSDE
+#include "TSDE.h"
+#endif
 namespace UnLua
 {
     constexpr EInternalObjectFlags AsyncObjectFlags = EInternalObjectFlags::AsyncLoading | EInternalObjectFlags::Async;
@@ -159,6 +162,26 @@ namespace UnLua
             Enum->Register(L);
 
         UnLuaLib::Open(L);
+
+
+
+#if WITH_TSDE
+        // Get the TSDE module instance and set the LuaState
+        FTSDEModule& TSDEModule = FModuleManager::LoadModuleChecked<FTSDEModule>("TSDE");
+        TSDEModule.SetLuaEnv(this);
+
+
+#if 0
+        // TSDE 모듈에 LuaState 전달
+        if (IModuleInterface* Module = FModuleManager::Get().GetModule("TSDE"))
+        {
+            FTSDEModule* TSDEModule = static_cast<FTSDEModule*>(Module);
+            TSDEModule->SetLuaState(L);
+        }
+#endif
+#endif
+
+
 
         OnCreated.Broadcast(*this);
         FUnLuaDelegates::OnLuaStateCreated.Broadcast(L);

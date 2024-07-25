@@ -54,7 +54,7 @@ public class UnLua : ModuleRules
                 "Slate",
                 "InputCore",
                 "Lua"
-            }
+             }
         );
 
         PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "Private"));
@@ -112,6 +112,24 @@ public class UnLua : ModuleRules
 
         if (IsPluginEnabled("LuaCompat"))
             PublicIncludePaths.Add(Path.Combine(PluginDirectory, "Source/ThirdParty/Lua/lua-compat-5.3/c-api"));
+
+
+        bool bIsTSDEPluginEnabled = IsPluginEnabled("TSDE");
+
+        // TSDE 플러그인이 활성화되어 있다면 매크로 정의
+        if (bIsTSDEPluginEnabled)
+        {
+            PublicDefinitions.Add("WITH_TSDE=1");
+            PublicDependencyModuleNames.Add("TSDE");
+            PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "../../../TSDE/Source/TSDE/Public"));
+            PrivateIncludePaths.Add(Path.Combine(ModuleDirectory, "../../../TSDE/Source/TSDE/Private"));
+        }
+        else
+        {
+            PublicDefinitions.Add("WITH_TSDE=0");
+        }
+
+     
     }
 
     private bool IsPluginEnabled(string name)
