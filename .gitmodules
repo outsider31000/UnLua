@@ -1,0 +1,3 @@
+[submodule "Plugins/TSDE"]
+    path = Plugins/TSDE
+    url = https://github.com/seokwoongchoi/TSDE.git
