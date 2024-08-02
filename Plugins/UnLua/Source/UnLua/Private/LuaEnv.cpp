@@ -31,9 +31,6 @@
 #include "UnLuaSettings.h"
 #include "lstate.h"
 
-#if WITH_TSDE
-#include "TSDE.h"
-#endif
 namespace UnLua
 {
     constexpr EInternalObjectFlags AsyncObjectFlags = EInternalObjectFlags::AsyncLoading | EInternalObjectFlags::Async;
@@ -45,7 +42,7 @@ namespace UnLua
 #if ENABLE_UNREAL_INSIGHTS && CPUPROFILERTRACE_ENABLED
     void Hook(lua_State* L, lua_Debug* ar)
     {
-        static TSet<FName> IgnoreNames{FName("Class"), FName("index"), FName("newindex")};
+        static TSet<FName> IgnoreNames{ FName("Class"), FName("index"), FName("newindex") };
 
         lua_getinfo(L, "nSl", ar);
 
@@ -58,9 +55,9 @@ namespace UnLua
 
             const auto EventName = FString::Printf(TEXT(
                 "%s [%s:%d]"),
-                                                   *FString(ar->name ? ar->name : "N/A"),
-                                                   *FPaths::GetBaseFilename(FString(ar->source)),
-                                                   ar->linedefined);
+                *FString(ar->name ? ar->name : "N/A"),
+                *FPaths::GetBaseFilename(FString(ar->source)),
+                ar->linedefined);
 
             if (ar->event == 0)
             {
@@ -162,26 +159,6 @@ namespace UnLua
             Enum->Register(L);
 
         UnLuaLib::Open(L);
-
-
-
-#if WITH_TSDE
-        // Get the TSDE module instance and set the LuaState
-        FTSDEModule& TSDEModule = FModuleManager::LoadModuleChecked<FTSDEModule>("TSDE");
-        TSDEModule.SetLuaEnv(this);
-
-
-#if 0
-        // TSDE 모듈에 LuaState 전달
-        if (IModuleInterface* Module = FModuleManager::Get().GetModule("TSDE"))
-        {
-            FTSDEModule* TSDEModule = static_cast<FTSDEModule*>(Module);
-            TSDEModule->SetLuaState(L);
-        }
-#endif
-#endif
-
-
 
         OnCreated.Broadcast(*this);
         FUnLuaDelegates::OnLuaStateCreated.Broadcast(L);
@@ -627,12 +604,12 @@ namespace UnLua
         FString FullPath;
 
         auto LoadIt = [&]
-        {
-            if (Env.LoadString(L, Data, FullPath))
-                return 1;
-            const auto Msg = FString::Printf(TEXT("file loading from file system error.\nfull path:%s"), *FullPath);
-            return luaL_error(L, TCHAR_TO_UTF8(*Msg));
-        };
+            {
+                if (Env.LoadString(L, Data, FullPath))
+                    return 1;
+                const auto Msg = FString::Printf(TEXT("file loading from file system error.\nfull path:%s"), *FullPath);
+                return luaL_error(L, TCHAR_TO_UTF8(*Msg));
+            };
 
         const auto PackagePath = UnLuaLib::GetPackagePath(L);
         if (PackagePath.IsEmpty())

@@ -54,7 +54,7 @@ public class UnLua : ModuleRules
                 "Slate",
                 "InputCore",
                 "Lua"
-             }
+            }
         );
 
         PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "Private"));
@@ -67,7 +67,7 @@ public class UnLua : ModuleRules
 
         var projectDir = Target.ProjectFile.Directory;
         var configFilePath = projectDir + "/Config/DefaultUnLuaEditor.ini";
-        var configFileReference = new FileReference(configFilePath); 
+        var configFileReference = new FileReference(configFilePath);
         var configFile = FileReference.Exists(configFileReference) ? new ConfigFile(configFileReference) : new ConfigFile();
         var config = new ConfigHierarchy(new[] { configFile });
         const string section = "/Script/UnLuaEditor.UnLuaEditorSettings";
@@ -79,8 +79,8 @@ public class UnLua : ModuleRules
                 flag = defaultValue;
             PublicDefinitions.Add(string.Format("{0}={1}", macro, (flag ? "1" : "0")));
         };
-        
-        Action<string, string, string > loadStringConfig = (key, macro, defaultValue) =>
+
+        Action<string, string, string> loadStringConfig = (key, macro, defaultValue) =>
         {
             string value;
             if (!config.GetString(section, key, out value))
@@ -112,24 +112,6 @@ public class UnLua : ModuleRules
 
         if (IsPluginEnabled("LuaCompat"))
             PublicIncludePaths.Add(Path.Combine(PluginDirectory, "Source/ThirdParty/Lua/lua-compat-5.3/c-api"));
-
-
-        bool bIsTSDEPluginEnabled = IsPluginEnabled("TSDE");
-
-        // TSDE 플러그인이 활성화되어 있다면 매크로 정의
-        if (bIsTSDEPluginEnabled)
-        {
-            PublicDefinitions.Add("WITH_TSDE=1");
-            PublicDependencyModuleNames.Add("TSDE");
-            PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "../../../TSDE/Source/TSDE/Public"));
-            PrivateIncludePaths.Add(Path.Combine(ModuleDirectory, "../../../TSDE/Source/TSDE/Private"));
-        }
-        else
-        {
-            PublicDefinitions.Add("WITH_TSDE=0");
-        }
-
-     
     }
 
     private bool IsPluginEnabled(string name)
@@ -137,7 +119,7 @@ public class UnLua : ModuleRules
         var engineDir = DirectoryReference.FromString(EngineDirectory);
         var projectDir = Target.ProjectFile.Directory;
         var projectDesc = ProjectDescriptor.FromFile(Target.ProjectFile);
-        
+
         foreach (var plugin in Plugins.ReadAvailablePlugins(engineDir, projectDir, null))
         {
             if (plugin.Name != name)
