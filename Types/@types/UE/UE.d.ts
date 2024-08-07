@@ -22,6 +22,7 @@ declare namespace UE {
   function LoadObject(Path: string): UObject;
   function LoadClass(Path: string): UClass;
   function NewObject(Path: string): UObject;
+
 }
 
 declare class TArray {
@@ -52,3 +53,4 @@ declare class MulticastDelegate {
 
 /** @noSelf */
 declare function UEPrint(...args: unknown[]): void;
+declare function NewObject<T extends UObject>(objClass: UClass, outer: UObject): T;
