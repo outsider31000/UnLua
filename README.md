@@ -1,73 +1,92 @@
-![LOGO](./Docs/Images/UnLua.png)
+
+# UnLua
+
+[![LOGO](./Docs/Images/UnLua.png)]()
 
 [![license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/Tencent/UnLua/blob/master/LICENSE.TXT)
 [![release](https://img.shields.io/github/v/release/Tencent/UnLua)](https://github.com/Tencent/UnLua/releases)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Tencent/UnLua/pulls)
 
-# 概述
-**UnLua**是适用于UE的一个高度优化的**Lua脚本解决方案**。它遵循UE的编程模式，功能丰富且易于学习，UE程序员可以零学习成本使用。
+## Overview
+**UnLua** is a highly optimized **Lua scripting solution** for Unreal Engine (UE). It follows UE's programming paradigm, is feature-rich, and easy to learn, enabling UE developers to use it with zero learning curve.
 
-# 在UE中使用Lua
-* 直接访问所有的UCLASS, UPROPERTY, UFUNCTION, USTRUCT, UENUM，无须胶水代码。
-* 替换蓝图中定义的实现 ( Event / Function )。
-* 处理各类事件通知 ( Replication / Animation / Input )。
+---
 
-更详细的功能介绍请查看[功能清单](Docs/CN/Features.md)。
+## Using Lua in UE
+* Directly access all `UCLASS`, `UPROPERTY`, `UFUNCTION`, `USTRUCT`, and `UENUM` without glue code.
+* Replace implementations defined in Blueprints (Event / Function).
+* Handle various event notifications (Replication / Animation / Input).
 
-# 优化特性
-* UFUNCTION调用，包括持久化参数缓存、优化的参数传递、优化的非常量引用和返回值处理。
-* 访问容器类（TArray, TSet, TMap），内存布局与引擎一致，Lua Table和容器之间不需要转换。
-* 高效的结构体创建、访问、GC。
-* 支持自定义静态导出类、成员变量、成员函数、全局函数、枚举。
+For more detailed functionality, check the [Feature List](Docs/CN/Features.md).
 
-# 平台支持
-* 运行平台：Windows / Android / iOS / Linux / OSX
-* 引擎版本：Unreal Engine 4.17.x - Unreal Engine 5.x
+---
 
-**注意**: 4.17.x 和 4.18.x 版本需要对 Build.cs 做一些修改。
+## Optimized Features
+* **`UFUNCTION` Calls**: Includes persistent parameter caching, optimized parameter passing, and improved handling of non-const references and return values.
+* **Access Container Classes**: (`TArray`, `TSet`, `TMap`), memory layout matches the engine, with no need for conversion between Lua tables and containers.
+* **Efficient Struct Handling**: Creation, access, and garbage collection (GC).
+* **Support for Custom Static Export**: Includes classes, member variables, member functions, global functions, and enums.
 
-# 快速开始
-## 安装
-  1. 复制 `Plugins` 目录到你的UE工程根目录。
-  2. 重新启动你的UE工程
+---
 
-## 开始UnLua之旅
-**注意**: 如果你是一位UE萌新，推荐使用更详细的[图文版教学](Docs/CN/Quickstart_For_UE_Newbie.md)继续以下步骤。
-  1. 新建蓝图后打开，在UnLua工具栏中选择 `绑定`（可同时按住`Alt`键自动生成第2步的路径）
-  2. 在接口的 `GetModule` 函数中填入Lua文件路径，如 `GameModes.BP_MyGameMode`
-  3. 选择UnLua工具栏中的 `创建Lua模版文件`
-  4. 打开 `Content/Script/GameModes/BP_MyGameMode.lua` 编写你的代码
+## Platform Support
+* **Runtime Platforms**: Windows / Android / iOS / Linux / macOS
+* **Engine Versions**: Unreal Engine 4.17.x - Unreal Engine 5.x
 
-# 更多示例
-  * [01_HelloWorld](Content/Script/Tutorials/01_HelloWorld.lua) 快速开始的例子
-  * [02_OverrideBlueprintEvents](Content/Script/Tutorials/02_OverrideBlueprintEvents.lua) 覆盖蓝图事件（Overridden Functions）
-  * [03_BindInputs](Content/Script/Tutorials/03_BindInputs.lua) 输入事件绑定
-  * [04_DynamicBinding](Content/Script/Tutorials/04_DynamicBinding.lua) 动态绑定
-  * [05_BindDelegates](Content/Script/Tutorials/05_BindDelegates.lua) 委托的绑定、解绑、触发
-  * [06_NativeContainers](Content/Script/Tutorials/06_NativeContainers.lua) 引擎层原生容器访问
-  * [07_CallLatentFunction](Content/Script/Tutorials/07_CallLatentFunction.lua) 在协程中调用 `Latent` 函数
-  * [08_CppCallLua](Content/Script/Tutorials/08_CppCallLua.lua) 从C++调用Lua
-  * [09_StaticExport](Content/Script/Tutorials/09_StaticExport.lua) 静态导出自定义类型到Lua使用
-  * [10_Replications](Content/Script/Tutorials/10_Replications.lua) 覆盖网络复制事件
-  * [11_ReleaseUMG](Content/Script/Tutorials/11_ReleaseUMG.lua) 释放UMG相关对象
-  * [12_CustomLoader](Content/Script/Tutorials/12_CustomLoader.lua) 自定义加载器
-  * [13_AnimNotify](Content/Script/Tutorials/AN_FootStep.lua) 动画通知
+**Note**: Versions 4.17.x and 4.18.x require modifications to `Build.cs`.
 
-# 最佳实践示例
+---
 
-[Lyra with UnLua](https://github.com/xuyanghuang-tencent/LyraWithUnLua) 基于UE官方 **Lyra初学者游戏包** 的完整示例项目，目前正在施工中
+## Quick Start
+### Installation
+1. Copy the `Plugins` directory to the root directory of your UE project.
+2. Restart your UE project.
 
-# 文档
+### Start Your UnLua Journey
+**Note**: If you are new to UE, it is recommended to follow the more detailed [Quickstart Guide for UE Newbies](Docs/CN/Quickstart_For_UE_Newbie.md) to continue with the following steps.
+1. Create and open a Blueprint. In the UnLua toolbar, select `Bind` (you can also hold `Alt` to automatically generate the path in step 2).
+2. In the `GetModule` function of the interface, enter the Lua file path, e.g., `GameModes.BP_MyGameMode`.
+3. Select `Create Lua Template File` in the UnLua toolbar.
+4. Open `Content/Script/GameModes/BP_MyGameMode.lua` and write your code.
 
-常用文档：[设置选项](Docs/CN/Settings.md) | [调试](Docs/CN/Debugging.md) | [智能提示](Docs/CN/IntelliSense.md) | [控制台命令](Docs/CN/ConsoleCommand.md) | [FAQ](Docs/CN/FAQ.md)
+---
 
-详细介绍：
-* [编程指南](Docs/CN/UnLua_Programming_Guide.md)：介绍 UnLua 的主要功能和编程模式
-* [插件与模块](Docs/CN/Plugins_And_Modules.md)：介绍 Plugins 目录下的插件列表以及它们所包含的模块
-* [功能清单](Docs/CN/Features.md)：更详细的功能列表
-* [实现原理](Docs/CN/How_To_Implement_Overriding.md)：介绍 UnLua 的两种覆盖机制
-* [API](Docs/CN/API.md)：更详细的 UnLua API 说明
+## More Examples
+* [01_HelloWorld](Content/Script/Tutorials/01_HelloWorld.lua): A quick start example.
+* [02_OverrideBlueprintEvents](Content/Script/Tutorials/02_OverrideBlueprintEvents.lua): Overriding Blueprint events (Overridden Functions).
+* [03_BindInputs](Content/Script/Tutorials/03_BindInputs.lua): Input event binding.
+* [04_DynamicBinding](Content/Script/Tutorials/04_DynamicBinding.lua): Dynamic binding.
+* [05_BindDelegates](Content/Script/Tutorials/05_BindDelegates.lua): Binding, unbinding, and triggering delegates.
+* [06_NativeContainers](Content/Script/Tutorials/06_NativeContainers.lua): Accessing native engine containers.
+* [07_CallLatentFunction](Content/Script/Tutorials/07_CallLatentFunction.lua): Calling `Latent` functions in coroutines.
+* [08_CppCallLua](Content/Script/Tutorials/08_CppCallLua.lua): Calling Lua from C++.
+* [09_StaticExport](Content/Script/Tutorials/09_StaticExport.lua): Exporting custom types for use in Lua.
+* [10_Replications](Content/Script/Tutorials/10_Replications.lua): Overriding network replication events.
+* [11_ReleaseUMG](Content/Script/Tutorials/11_ReleaseUMG.lua): Releasing UMG-related objects.
+* [12_CustomLoader](Content/Script/Tutorials/12_CustomLoader.lua): Custom loader.
+* [13_AnimNotify](Content/Script/Tutorials/AN_FootStep.lua): Animation notifications.
 
-# 技术支持
-- 官方交流QQ群：936285107
-- 推荐VSCode插件：[Lua Booster](https://marketplace.visualstudio.com/items?itemName=operali.lua-booster)
+---
+
+## Best Practice Example
+
+[Lyra with UnLua](https://github.com/xuyanghuang-tencent/LyraWithUnLua): A complete example project based on the official UE **Lyra Starter Game Package** (currently under development).
+
+---
+
+## Documentation
+
+- **Common Docs**: [Settings Options](Docs/CN/Settings.md) | [Debugging](Docs/CN/Debugging.md) | [IntelliSense](Docs/CN/IntelliSense.md) | [Console Commands](Docs/CN/ConsoleCommand.md) | [FAQ](Docs/CN/FAQ.md)
+
+### Detailed Documentation:
+* [Programming Guide](Docs/CN/UnLua_Programming_Guide.md): Introduces UnLua's main features and programming paradigms.
+* [Plugins and Modules](Docs/CN/Plugins_And_Modules.md): Describes the plugins in the `Plugins` directory and their included modules.
+* [Feature List](Docs/CN/Features.md): A more detailed list of features.
+* [Implementation Principles](Docs/CN/How_To_Implement_Overriding.md): Explains UnLua's two overriding mechanisms.
+* [API](Docs/CN/API.md): Detailed UnLua API documentation.
+
+---
+
+## Technical Support
+- **Official QQ Group**: 936285107
+- **Recommended VSCode Plugin**: [Lua Booster](https://marketplace.visualstudio.com/items?itemName=operali.lua-booster)
